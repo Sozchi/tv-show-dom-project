@@ -3,16 +3,24 @@ const allEpisodes = getAllEpisodes();
 makePageForEpisodes(allEpisodes);
 let root = document.getElementById('root');
 let search = document.getElementById('search');
-let mainContainer = document.createElement('ul');
+let mainContainer = document.createElement( 'ul' );
+let selectEl = document.createElement( 'select' );
+let optEl = document.createElement( 'option' );
+let container = document.getElementById( 'container' );
 mainContainer.id = 'mainContainer';
 root.appendChild(mainContainer);
-function pad(num, size) {
+ 
+function pad( num, size )
+{
+  
   num = num.toString();
   while (num.length < size) num = "0" + num;
   return num;
 }
+
 // level 100 
 function setup() {
+  
 allEpisodes.forEach(elem => {
     let list = document.createElement('li');
     let title = document.createElement('h4'); // create display title tag
@@ -24,10 +32,16 @@ allEpisodes.forEach(elem => {
     list.innerHTML = elem.summary;
     list.insertBefore(title, list.childNodes[0]);
     list.insertBefore(img, list.childNodes[1]);
-    mainContainer.appendChild(list);
-  })
+  mainContainer.appendChild( list );
+    
+} )
+  
+  //makePageForEpisodes( allEpisodes );
 }
-  // level 200 (live search)
+ selectEpisodes( allEpisodes );
+
+
+// level 200 (live search)
 function mySearchFunction() {
   // Declare variables
   let input, filter, ul, li, title, summaryNoP, i;
@@ -57,8 +71,50 @@ function mySearchFunction() {
   // display search's result number
   //document.getElementById('result').textContent = `Displaying ${document.querySelectorAll('#mainContainer li:not(.hidden)').length}/${allEpisodes.length} episodes`;
 } 
+
+function selectEpisodes(epSelect)
+{
+  selectEl.innerHTML = '';
+  optEl.innerHTML = 'select an Episode'
+  selectEl.appendChild( optEl );
+  epSelect.forEach( episode =>
+  {
+    let option = document.createElement( 'option' );
+    option.value = episode.name;
+    option.innerHTML = `${ episode.name } - S${ pad( episode.season, 2 ) }E${ pad( episode.number, 2 ) }`;
+    selectEl.appendChild( option );
+  } )
+  selectEl.addEventListener( 'change', ( e ) =>
+  {
+    let eachEpisode;
+    
+
+    if ( e.target.value === 'select an Episode' )
+    {
+      //console.log( eachEpisode );
+      eachEpisode = epSelect;
+    } else
+    {
+      eachEpisode = epSelect.filter( el =>
+      {
+        console.log( e.target.value);
+        return el.name === e.target.value;
+      })
+    }
+  
+   makePageForEpisodes( eachEpisode );
+  } )
+  
+  container.appendChild( selectEl );
+
+}
+//
+
   // Loop through all list items, and hide those who don't match the search query
-function makePageForEpisodes(episodeList) {
+
+function makePageForEpisodes( episodeList )
+{
+
   const rootElem = document.getElementById("root");
   //rootElem.textContent = `Got ${episodeList.length} episode(s)`;
 }
