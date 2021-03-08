@@ -10,15 +10,24 @@
   </head>
 
   <body>
+    <div id="container">
     <input type="text" id="myInput" onkeyUp="mySearchFunction()" placeholder="Search">
+    <select name="shows" id="showsDropDown"></select>
+    <select name="episodes" id="episodeDropDown"></select>
+    <button id="showViewButton">shows listing</button>
+    </div>
+    
     <div id="root">
+      <div id="showsView"></div>
+      <div id="episodeView"></div>
     </div>
 
     <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
-    <script src="episodes.js"></script>
+    <script src="shows.js"></script>
 
     <!-- Loads YOUR javascript code -->
     <script src="script.js"></script>
+
   </body>
 
 </html>

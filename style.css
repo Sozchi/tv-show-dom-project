@@ -1,5 +1,6 @@
 #root {
   color: red;
+  background-color: rgb(122, 122, 94);
 }
 
 #myInput {
@@ -17,6 +18,8 @@
 #mainContainer {
   display: flex;
   flex-wrap: wrap;
+  color: rgb(22, 107, 182);
+  background-color: rgb(126, 152, 173);
 }
 h4 {
   width: 180px;
@@ -27,6 +30,7 @@ h4 {
   margin: 20px;
   color: black;
   text-align: center;
+  background-color: aliceblue;
 }
 ul li {
   list-style: none;
@@ -37,27 +41,38 @@ ul li {
   margin: 20px;
   color: black;
   text-align: left;
+  background-color: rgb(197, 218, 104);
 }
 /* using class to hide non result  */
 .hidden {
   display: none;
 }
+
+#container{
+  background-color: rgb(83, 157, 170);
+}
+
 #topContainer, #Search {
   display: flex;
 }
+
 #selectOption {
   height: fit-content;
   width: 300px;
+
 }
+
 option {
   width: 400px;
   padding-left: 20px;
   margin-right: 20px;
 }
+
 #result {
   font-size: 1.5rem;
   margin-left: 20px;
 }
+
 #disclaimer {
   text-align: center;
 }
