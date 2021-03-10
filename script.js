@@ -63,7 +63,7 @@ window.onload = setup;
 // level 200 (live search)
 function mySearchFunction()
 {
-  let input, filter; // Declare variables
+  let input, filter;
   let allEpisodes =[...document.querySelectorAll( 'li' )]
   input = document.getElementById("myInput");
   filter = input.value.toUpperCase(); 
@@ -142,11 +142,6 @@ function populateShowsDropdown(){
   })
 
 }
-
-
-// Provide a free-text show search through show names, genres, and summary texts.
-// Ensure that your episode search and episode selector controls still work correctly when you switch from shows listing to episodes listing and back.
-// Continue to get the list of shows the same way you did in level 400. (You do not need to fetch it.)
 
 //Level 500
 function populateShowListings()
