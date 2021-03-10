@@ -1,10 +1,11 @@
 //You can edit ALL of the code here
 const shows = getAllShows();
 let root = document.getElementById( 'root' );
-let episodeView = document.getElementById( 'episodeView' );
-let showsView = document.getElementById( 'showsView' );
 let showViewButton = document.getElementById( 'showViewButton' );
-
+let episodeView = document.createElement( 'div' );
+let showsView = document.createElement( 'div' );
+root.appendChild( episodeView );
+root.appendChild(showsView);
 
  
 function pad( num, size )
@@ -14,7 +15,7 @@ function pad( num, size )
   return num;
 }
 
-// level 100 &level 350
+// level 100 
 function setup() {
   populateShowsDropdown(); 
   populateShowListings();
@@ -36,8 +37,8 @@ function makePageForEpisodes( allEpisodes )
   allEpisodes.forEach(elem => {
     let list = document.createElement( 'li' );
     list.id = elem.id;
-    let title = document.createElement('h4'); // create display title tag
-    let img = document.createElement('img'); // create display image tag
+    let title = document.createElement('h4');
+    let img = document.createElement('img');
     title.id = 'title';
     img.id = 'img';
     title.innerText = `${elem.name} - S${pad(elem.season, 2)}E${pad(elem.number,2)}`;
@@ -64,8 +65,8 @@ function mySearchFunction()
 {
   let input, filter; // Declare variables
   let allEpisodes =[...document.querySelectorAll( 'li' )]
-  input = document.getElementById("myInput"); // User Input
-  filter = input.value.toUpperCase(); // Filter, makes search not case sensitive
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase(); 
   let selectedEpisodes
   if ( input.value === '' )
   {
@@ -85,11 +86,8 @@ function mySearchFunction()
     
       showOrHideEpisode( selectedEpisodes );
 
-
-  
-  
 } 
-// episode drop down
+// episode drop down Level 300
 function populateEpisodeDropdown( allEpisodes )
 {
   let selectEl = document.getElementById( 'episodeDropDown' );
@@ -122,7 +120,7 @@ function showOrHideEpisode( episodeId )
 }
 
 
-// show drop down
+// show drop down 400
 function populateShowsDropdown(){
   let select = document.getElementById( 'showsDropDown' );
 
@@ -201,10 +199,10 @@ function populateShowListings()
        
   })
 }
-
+// level 500 & 350
 function updateEpisode(showId)
 {
-  fetch( `https://api.tvmaze.com/shows/${showId}/episodes` )
+  fetch( `https://api.tvmaze.com/shows/${showId}/episodes` )    
     .then( response => response.json() )
     .then( (data) => {
       
