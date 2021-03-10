@@ -153,43 +153,43 @@ function populateShowListings()
 {
   shows.forEach( (show) =>
   {
-    let container = document.createElement( 'div' );
-    container.id = show.id;
+    let showContainer = document.createElement( 'div' );
+    showContainer.id = show.id;
     let title = document.createElement( 'h3' );
     title.innerHTML = show.name;
-    container.appendChild( title );
+    showContainer.appendChild( title );
 
     if ( show.image != null )
     {
       let img = document.createElement( 'img' );
       img.src = show.image.medium;
-      container.appendChild( img );
+      showContainer.appendChild( img );
     }
     
 
     let summary = document.createElement( 'div' );
     summary.innerHTML = show.summary;
-    container.appendChild( summary );
+    showContainer.appendChild( summary );
 
     let genres = document.createElement( 'p' );
     genres.innerHTML = show.genres.join();
-    container.appendChild( genres );
+    showContainer.appendChild( genres );
 
     let status = document.createElement( 'p' );
     status.innerHTML = `STATUS: ${show.status}`;
-    container.appendChild( status );
+    showContainer.appendChild( status );
 
     let rating = document.createElement( 'p' );
     rating.innerHTML = show.rating.average;
-    container.appendChild( rating );
+    showContainer.appendChild( rating );
 
     let runtime = document.createElement( 'p' );
     runtime.innerHTML = show.runtime;
-    container.appendChild( runtime );
+    showContainer.appendChild( runtime );
 
-    showsView.appendChild( container );
+    showsView.appendChild( showContainer );
 
-    container.addEventListener( 'click', ( e ) =>
+    showContainer.addEventListener( 'click', ( e ) =>
     {
       const showId = e.currentTarget.id;
       updateEpisode( showId )
